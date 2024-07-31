@@ -2,6 +2,8 @@ server:
   port: 8004
 # 应用名称
 spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
   application:
     name: fc-async
 

@@ -23,7 +23,7 @@ public interface AsyncLogService extends IService<AsyncLog> {
      *
      * @param asyncId
      */
-    void deleteLog(Long asyncId);
+    void deleteLog(String asyncId);
 
     /**
      * 获取最后一次失败信息
@@ -31,5 +31,5 @@ public interface AsyncLogService extends IService<AsyncLog> {
      * @param asyncId
      * @return
      */
-    String getErrorData(Long asyncId);
+    String getErrorData(String asyncId);
 }

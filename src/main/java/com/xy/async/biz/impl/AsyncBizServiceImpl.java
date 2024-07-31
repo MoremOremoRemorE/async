@@ -189,7 +189,7 @@ public class AsyncBizServiceImpl implements AsyncBizService  {
     private void saveAsyncReq(AsyncExecDto asyncExecDto) {
         AsyncReq asyncReq = asyncConverter.toAsyncReq.apply(asyncExecDto);
         asyncReq.setExecStatus(ExecStatusEnum.ERROR.getStatus());
-        asyncReqService.save(asyncReq);
+        asyncReqService.saveReq(asyncReq);
         log.info("处理失败后保存数据库成功：{}", asyncReq);
     }
 
@@ -206,7 +206,7 @@ public class AsyncBizServiceImpl implements AsyncBizService  {
         AsyncLog asyncLog = new AsyncLog();
         asyncLog.setAsyncId(asyncReq.getId());
         asyncLog.setErrorData(ExceptionUtils.getStackTrace(e));
-        asyncLogService.save(asyncLog);
+        asyncLogService.saveLog(asyncLog);
         log.info("处理失败后保存失败日志成功：{}", asyncReq);
     }
 

@@ -73,7 +73,7 @@ public abstract class AbstractHandlerService implements HandlerService {
         AsyncReq asyncReq = asyncConverter.toAsyncReq.apply(asyncExecDto);
         try {
             asyncReq.setExecStatus(execStatus);
-            asyncReqService.save(asyncReq);
+            asyncReqService.saveReq(asyncReq);
             log.info("异步执行保存数据库成功：{}", asyncReq);
             return asyncReq;
         } catch (Exception e) {

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * 异步执行日志实体类
@@ -19,12 +20,12 @@ public class AsyncLog implements Serializable {
     /**
      * 主键ID
      */
-    private Long id;
+    private String id;
 
     /**
      * 异步请求ID
      */
-    private Long asyncId;
+    private String asyncId;
 
     /**
      * 执行错误信息

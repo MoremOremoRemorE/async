@@ -30,14 +30,14 @@ public interface AsyncReqService extends IService<AsyncReq> {
      * @param id
      * @param execStatus
      */
-    void updateStatus(Long id, Integer execStatus);
+    void updateStatus(String id, Integer execStatus);
 
     /**
      * 删除
      *
      * @param id
      */
-    void deleteReq(Long id);
+    void deleteReq(String id);
 
     /**
      * 根据ID查询
@@ -45,7 +45,7 @@ public interface AsyncReqService extends IService<AsyncReq> {
      * @param id
      * @return
      */
-    AsyncReq getByIdReq(Long id);
+    AsyncReq getByIdReq(String id);
 
     /**
      * 自动重试

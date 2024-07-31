@@ -1,5 +1,6 @@
 package com.xy.async.domain.service.impl;
 
+import cn.hutool.core.util.IdUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -55,11 +56,12 @@ public class AsyncReqServiceImpl extends ServiceImpl<AsyncReqMapper, AsyncReq> i
     public void saveReq(AsyncReq asyncReq) {
         asyncReq.setCreateTime(new Date());
         asyncReq.setUpdateTime(new Date());
+        asyncReq.setId(IdUtil.randomUUID());
         this.save(asyncReq);
     }
 
     @Override
-    public void updateStatus(Long id, Integer execStatus) {
+    public void updateStatus(String id, Integer execStatus) {
         UpdateWrapper<AsyncReq> updateWrapper = new UpdateWrapper<>();
         updateWrapper.set("exec_status", execStatus)
                 .set("update_time", new Date())
@@ -69,12 +71,12 @@ public class AsyncReqServiceImpl extends ServiceImpl<AsyncReqMapper, AsyncReq> i
     }
 
     @Override
-    public void deleteReq(Long id) {
+    public void deleteReq(String id) {
         this.removeById(id);
     }
 
     @Override
-    public AsyncReq getByIdReq(Long id) {
+    public AsyncReq getByIdReq(String id) {
         return this.getById(id);
     }
 
@@ -103,7 +105,7 @@ public class AsyncReqServiceImpl extends ServiceImpl<AsyncReqMapper, AsyncReq> i
     @Override
     public void listAsyncPage(PageInfoDto<AsyncReq> pageInfo) {
         // 创建 Page 对象，传入当前页码和每页记录数
-        Page<AsyncReq> page = new Page<>(pageInfo.getPageNum(), pageInfo.getPageSize());
+        Page<AsyncReq> page = new Page<>(pageInfo.getPageNum(), pageInfo.getPageSize(),true);
 
         // 构建 QueryWrapper 对象，添加查询条件
         QueryWrapper<AsyncReq> queryWrapper = new QueryWrapper<>();

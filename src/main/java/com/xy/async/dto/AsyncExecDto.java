@@ -22,7 +22,7 @@ public class AsyncExecDto implements Serializable {
     /**
      * 主键ID
      */
-    private Long id;
+    private String id;
 
     /**
      * 应用名称

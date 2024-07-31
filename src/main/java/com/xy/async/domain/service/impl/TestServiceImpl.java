@@ -17,4 +17,11 @@ public class TestServiceImpl implements TestService {
         int i = 1 / 0;
         return "hello";
     }
+
+    @Override
+    @AsyncExec(type = AsyncTypeEnum.ASYNC_SAVE, delayTime = 1000, remark = "测试")
+    public String test2(String name) {
+        int i = 1 / 0;
+        return "";
+    }
 }

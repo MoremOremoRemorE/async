@@ -7,4 +7,5 @@ package com.xy.async.domain.service;
 public interface TestService {
     String test();
 
+    String test2(String name);
 }

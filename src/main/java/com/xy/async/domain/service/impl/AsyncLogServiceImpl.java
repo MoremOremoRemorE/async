@@ -1,5 +1,6 @@
 package com.xy.async.domain.service.impl;
 
+import cn.hutool.core.util.IdUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xy.async.domain.entity.AsyncLog;
@@ -22,16 +23,17 @@ public class AsyncLogServiceImpl extends ServiceImpl<AsyncLogMapper, AsyncLog> i
     @Override
     public void saveLog(AsyncLog asyncLog) {
         asyncLog.setCreateTime(new Date());
+        asyncLog.setId(IdUtil.randomUUID());
         this.save(asyncLog);
     }
 
     @Override
-    public void deleteLog(Long asyncId) {
+    public void deleteLog(String asyncId) {
         this.removeById(asyncId);
     }
 
     @Override
-    public String getErrorData(Long asyncId) {
+    public String getErrorData(String asyncId) {
         return this.baseMapper.selectOne(new QueryWrapper<AsyncLog>().lambda().eq(AsyncLog::getAsyncId, asyncId).orderByDesc(AsyncLog::getId).last("limit 1")).getErrorData();
     }
 }

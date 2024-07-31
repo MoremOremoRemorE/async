@@ -45,7 +45,7 @@ public class AsyncController {
     }
 
     @PostMapping(value = "/detail/{id}")
-    public Map<String, Object> detail(@PathVariable("id") Long id) {
+    public Map<String, Object> detail(@PathVariable("id") String id) {
         AsyncReq asyncReq = asyncReqService.getById(id);
         if (null == asyncReq) {
             return this.error("异步任务不存在");
@@ -60,7 +60,7 @@ public class AsyncController {
     }
 
     @PostMapping(value = "/exec/{id}")
-    public Map<String, Object> exec(@PathVariable("id") Long id) {
+    public Map<String, Object> exec(@PathVariable("id") String id) {
         AsyncReq asyncReq = asyncReqService.getById(id);
         if (null == asyncReq) {
             return this.error("异步任务不存在");
@@ -73,7 +73,7 @@ public class AsyncController {
     }
 
     @PostMapping(value = "/delete/{id}")
-    public Map<String, Object> delete(@PathVariable("id") Long id) {
+    public Map<String, Object> delete(@PathVariable("id") String id) {
         asyncReqService.deleteReq(id);
         asyncLogService.deleteLog(id);
         return this.success("删除成功");
