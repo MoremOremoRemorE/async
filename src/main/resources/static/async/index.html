@@ -175,6 +175,7 @@
                 let self = this;
                 post("../xy/async/exec/" + row.id, postData, function (rsp) {
                     self.handlerQuery();
+                    alert("执行成功");
                 }, function (rsp) {
                     self.handlerQuery();
                     alert(rsp);
